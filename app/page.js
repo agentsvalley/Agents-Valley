@@ -1,4 +1,4 @@
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import Image from "next/image";
 import {
   Typography,
@@ -53,17 +53,19 @@ export default function Home() {
               </Typography>
             </Link>
 
-            <Button
-              variant="contained"
-              sx={{
-                backgroundColor: "#5975fa",
-                color: "white",
-                fontWeight: "bold",
-                textTransform: "none"
-              }}
-            >
-              Browse Agents
-            </Button>
+            <Link href="/agents" passHref>
+              <Button
+                variant="contained"
+                sx={{
+                  backgroundColor: "#5975fa",
+                  color: "white",
+                  fontWeight: "bold",
+                  textTransform: "none",
+                }}
+              >
+                Browse Agents
+              </Button>
+            </Link>
           </Toolbar>
         </Container>
       </AppBar>
@@ -115,7 +117,14 @@ export default function Home() {
           <Typography
             variant="h4"
             className="text-center text-[#5975fa]"
-            sx={{ fontSize: { xs: "2rem", md: "2.5rem", marginBottom: 30, fontWeight: "bolder" } }}
+            sx={{
+              fontSize: {
+                xs: "2rem",
+                md: "2.5rem",
+                marginBottom: 30,
+                fontWeight: "bolder",
+              },
+            }}
           >
             Meet Our Team
           </Typography>
@@ -130,7 +139,7 @@ export default function Home() {
                   borderRadius: "0.75rem",
                   textAlign: "center",
                   color: "#caddfe",
-                  backgroundColor: "#292929"
+                  backgroundColor: "#292929",
                 }}
               >
                 <Avatar
@@ -157,7 +166,11 @@ export default function Home() {
                     href={member.linkedinUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    sx={{ color: "#5975fa", display: "inline-flex", alignItems: "center" }}
+                    sx={{
+                      color: "#5975fa",
+                      display: "inline-flex",
+                      alignItems: "center",
+                    }}
                   >
                     <LinkedInIcon />
                   </MuiLink>
