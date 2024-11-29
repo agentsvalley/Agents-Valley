@@ -1,4 +1,4 @@
-import { Linkedin } from "lucide-react";
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import Image from "next/image";
 import {
   Typography,
@@ -6,10 +6,29 @@ import {
   AppBar,
   Toolbar,
   Button,
+  Card,
+  CardContent,
+  Avatar,
+  Link as MuiLink,
 } from "@mui/material";
 import Link from "next/link";
 
 export default function Home() {
+  const teamMembers = [
+    {
+      name: "Hamza Rehman",
+      position: "Founder",
+      imageUrl: "/hamza.jpeg",
+      linkedinUrl: "https://www.linkedin.com/in/hamzarehman4",
+    },
+    {
+      name: "Abdullah Bin Altaf",
+      position: "Co-Founder",
+      imageUrl: "/abdullah.jpeg",
+      linkedinUrl: "https://www.linkedin.com/in/abdullah-k18",
+    },
+  ];
+
   return (
     <div className="bg-black min-h-screen">
       <AppBar
@@ -19,6 +38,7 @@ export default function Home() {
           boxShadow: "none",
           position: "relative",
         }}
+        className="border-b "
       >
         <Container>
           <Toolbar disableGutters className="flex justify-between">
@@ -47,8 +67,6 @@ export default function Home() {
           </Toolbar>
         </Container>
       </AppBar>
-
-      <hr></hr>
 
       <section
         id="home"
@@ -92,7 +110,63 @@ export default function Home() {
         </Container>
       </section>
 
-      <hr />
+      <section id="team" className="py-16 bg-[#1a1a1a] text-white">
+        <Container>
+          <Typography
+            variant="h4"
+            className="text-center text-[#5975fa]"
+            sx={{ fontSize: { xs: "2rem", md: "2.5rem", marginBottom: 30, fontWeight: "bolder" } }}
+          >
+            Meet Our Team
+          </Typography>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+            {teamMembers.map((member, index) => (
+              <Card
+                key={index}
+                className="shadow-lg"
+                sx={{
+                  padding: "1.5rem",
+                  borderRadius: "0.75rem",
+                  textAlign: "center",
+                  color: "#caddfe",
+                  backgroundColor: "#292929"
+                }}
+              >
+                <Avatar
+                  src={member.imageUrl}
+                  alt={member.name}
+                  sx={{
+                    width: "100px",
+                    height: "100px",
+                    margin: "0 auto",
+                    marginBottom: "1rem",
+                  }}
+                />
+                <CardContent>
+                  <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+                    {member.name}
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    sx={{ color: "#97b1dd", marginBottom: "1rem" }}
+                  >
+                    {member.position}
+                  </Typography>
+                  <MuiLink
+                    href={member.linkedinUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    sx={{ color: "#5975fa", display: "inline-flex", alignItems: "center" }}
+                  >
+                    <LinkedInIcon />
+                  </MuiLink>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </Container>
+      </section>
 
       <footer className="bg-black pt-4">
         <Container>
@@ -112,7 +186,7 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="text-[#caddfe]"
               >
-                <Linkedin size={20} />
+                <LinkedInIcon size={20} />
               </Link>
             </div>
           </div>
