@@ -1,4 +1,8 @@
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import LanguageIcon from "@mui/icons-material/Language";
+import EmailIcon from "@mui/icons-material/Email";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import YouTubeIcon from "@mui/icons-material/YouTube";
 import Image from "next/image";
 import {
   Typography,
@@ -30,27 +34,37 @@ export default function Home() {
   ];
 
   return (
-    <div className="bg-black min-h-screen">
+    <div className="bg-white min-h-screen">
       <AppBar
         sx={{
-          backgroundColor: "black",
+          backgroundColor: "white",
           color: "black",
           boxShadow: "none",
           position: "relative",
         }}
-        className="border-b "
+        className="border-b"
       >
         <Container>
-          <Toolbar disableGutters className="flex justify-between">
+          <Toolbar
+            disableGutters
+            className="flex justify-between flex-wrap sm:flex-nowrap"
+          >
             <Link href="/" passHref>
-              <Typography
-                variant="h6"
-                component="div"
-                sx={{ fontWeight: "800", fontSize: "1.5rem" }}
-                className="text-[#5975fa] cursor-pointer"
-              >
-                Agent Valley
-              </Typography>
+              <div className="flex items-center cursor-pointer mb-2 sm:mb-0">
+                <img
+                  src="/logo.png"
+                  alt="Logo"
+                  className="h-6 w-6 sm:h-8 sm:w-8 mr-2"
+                />
+                <Typography
+                  variant="h6"
+                  component="div"
+                  sx={{ fontWeight: "800" }}
+                  className="text-[#5975fa] text-base sm:text-xl"
+                >
+                  AgentsValley
+                </Typography>
+              </div>
             </Link>
 
             <Link href="/agents" passHref>
@@ -61,7 +75,10 @@ export default function Home() {
                   color: "white",
                   fontWeight: "bold",
                   textTransform: "none",
+                  fontSize: "0.75rem",
+                  padding: "0.5rem 1rem",
                 }}
+                className="text-sm sm:text-base"
               >
                 Browse Agents
               </Button>
@@ -91,7 +108,7 @@ export default function Home() {
 
               <Typography
                 variant="body1"
-                className="text-[#caddfe]"
+                className="text-black"
                 sx={{ fontSize: { xs: "1rem", md: "1.2rem" } }}
               >
                 Discover a marketplace where businesses and individuals unlock
@@ -112,7 +129,7 @@ export default function Home() {
         </Container>
       </section>
 
-      <section id="team" className="py-16 bg-[#1a1a1a] text-white">
+      <section id="team" className="py-16 bg-white">
         <Container>
           <Typography
             variant="h4"
@@ -133,13 +150,12 @@ export default function Home() {
             {teamMembers.map((member, index) => (
               <Card
                 key={index}
-                className="shadow-lg"
+                className="shadow-lg bg-gray-100 transform transition-transform duration-300 ease-in-out hover:scale-105 cursor-pointer"
                 sx={{
                   padding: "1.5rem",
                   borderRadius: "0.75rem",
                   textAlign: "center",
                   color: "#caddfe",
-                  backgroundColor: "#292929",
                 }}
               >
                 <Avatar
@@ -153,21 +169,22 @@ export default function Home() {
                   }}
                 />
                 <CardContent>
-                  <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-                    {member.name}
-                  </Typography>
                   <Typography
-                    variant="body2"
-                    sx={{ color: "#97b1dd", marginBottom: "1rem" }}
+                    variant="h6"
+                    sx={{
+                      fontWeight: "bold",
+                      color: "#5975fa",
+                      marginBottom: 1,
+                    }}
                   >
-                    {member.position}
+                    {member.name}
                   </Typography>
                   <MuiLink
                     href={member.linkedinUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     sx={{
-                      color: "#5975fa",
+                      color: "black",
                       display: "inline-flex",
                       alignItems: "center",
                     }}
@@ -181,25 +198,99 @@ export default function Home() {
         </Container>
       </section>
 
-      <footer className="bg-black pt-4">
+      <footer className="bg-[#5975fa] pt-8 pb-4">
         <Container>
-          <div className="flex flex-col sm:flex-row justify-between items-center">
+          <div className="flex flex-col items-center">
+            <div className="mb-4 w-full max-w-md">
+              <Typography
+                variant="h6"
+                className="text-white text-center"
+                sx={{ fontWeight: "bold", marginBottom: 4 }}
+              >
+                Contact Us
+              </Typography>
+              <form>
+                <div className="mb-4">
+                  <input
+                    type="text"
+                    id="name"
+                    placeholder="Your Name"
+                    className="w-full border border-white rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-white bg-transparent text-white"
+                  />
+                </div>
+                <div className="mb-4">
+                  <input
+                    type="email"
+                    id="email"
+                    placeholder="Your Email"
+                    className="w-full border border-white rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-white bg-transparent text-white"
+                  />
+                </div>
+                <div className="mb-4">
+                  <textarea
+                    id="message"
+                    placeholder="Your Message"
+                    rows="4"
+                    className="w-full border border-white rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-white bg-transparent text-white"
+                  ></textarea>
+                </div>
+                <button
+                  type="submit"
+                  className="bg-white text-[#5975fa] font-bold py-2 px-4 rounded-md transform transition-transform duration-300 hover:scale-110"
+                >
+                  Submit
+                </button>
+              </form>
+            </div>
+
             <Typography
               variant="body2"
-              className="text-[#caddfe] text-center sm:text-left"
-              sx={{ marginBottom: "1rem" }}
+              className="text-white text-center"
+              sx={{ marginBottom: 2 }}
             >
               &copy; 2024 Agents Valley. All rights reserved.
             </Typography>
 
-            <div className="flex items-center space-x-2 mb-4">
+            <div className="flex items-center space-x-4">
+              <Link
+                href="https://agentsvalley.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white transform transition-transform duration-300 hover:scale-110"
+              >
+                <LanguageIcon />
+              </Link>
+              <Link
+                href="mailto:contact@agentsvalley.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white transform transition-transform duration-300 hover:scale-110"
+              >
+                <EmailIcon />
+              </Link>
               <Link
                 href="https://www.linkedin.com/company/agentsvalley"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#caddfe]"
+                className="text-white transform transition-transform duration-300 hover:scale-110"
               >
-                <LinkedInIcon size={20} />
+                <LinkedInIcon />
+              </Link>
+              <Link
+                href="https://github.com/agentsvalley"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white transform transition-transform duration-300 hover:scale-110"
+              >
+                <GitHubIcon />
+              </Link>
+              <Link
+                href="https://www.youtube.com/agentsvalley"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white transform transition-transform duration-300 hover:scale-110"
+              >
+                <YouTubeIcon />
               </Link>
             </div>
           </div>
