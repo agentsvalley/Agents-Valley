@@ -80,7 +80,7 @@ export default function Home() {
                 }}
                 className="text-sm sm:text-base"
               >
-                Browse Agents
+                Get Started
               </Button>
             </Link>
           </Toolbar>
