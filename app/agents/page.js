@@ -11,6 +11,11 @@ import {
   CardContent,
   Menu,
   MenuItem,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  Button as MuiButton,
 } from "@mui/material";
 import { ChevronDown } from "lucide-react";
 import Link from "next/link";
@@ -29,6 +34,8 @@ export default function Agents() {
       image: "/ubuntu.svg",
     },
   ]);
+  const [openDialog, setOpenDialog] = useState(false);
+  const [selectedModel, setSelectedModel] = useState(null);
 
   const filteredModels = models.filter(
     (model) =>
@@ -45,15 +52,26 @@ export default function Agents() {
     setAnchorEl(null);
   };
 
+  const handleCardClick = (model) => {
+    setSelectedModel(model);
+    setOpenDialog(true);
+  };
+
+  const handleCloseDialog = () => {
+    setOpenDialog(false);
+    setSelectedModel(null);
+  };
+
   return (
     <div className="min-h-screen" style={{ backgroundColor: "white" }}>
       <AppBar
         position="fixed"
         sx={{
           backgroundColor: "white",
+          color: "black",
           boxShadow: "none",
-          borderBottom: "1px solid #333",
         }}
+        className="border-b"
       >
         <Toolbar>
           <Container className="flex justify-between items-center">
@@ -111,7 +129,7 @@ export default function Agents() {
                     onMouseLeave: handleMenuClose,
                   }}
                   sx={{
-                    mt: 1,
+                    width: "150%",
                     "& .MuiMenuItem-root": {
                       color: "#5975fa",
                       "&:hover": {
@@ -168,63 +186,63 @@ export default function Agents() {
       >
         {filteredModels.length > 0 ? (
           filteredModels.map((model, index) => (
-            <Link href={model.link} passHref key={index}>
-              <Card
-                sx={{
-                  background: model.bgColor,
-                  borderRadius: "10px",
-                  color: "#fff",
-                  textAlign: "center",
-                  transition: "transform 0.3s",
-                  height: "200px",
+            <Card
+              key={index}
+              onClick={() => handleCardClick(model)}
+              sx={{
+                background: model.bgColor,
+                borderRadius: "10px",
+                color: "#fff",
+                textAlign: "center",
+                transition: "transform 0.3s",
+                height: "200px",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "flex-start",
+                alignItems: "center",
+                cursor: "pointer",
+                "&:hover": {
+                  transform: "scale(1.05)",
+                },
+              }}
+            >
+              <div
+                style={{
+                  position: "relative",
+                  width: "100%",
+                  height: "60%",
                   display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "flex-start",
+                  justifyContent: "center",
                   alignItems: "center",
-                  "&:hover": {
-                    transform: "scale(1.05)",
-                  },
                 }}
               >
-                <div
+                <img
+                  src={model.image}
+                  alt={model.name}
                   style={{
-                    position: "relative",
-                    width: "100%",
-                    height: "60%",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
+                    height: "120px",
+                    marginBottom: "-40px",
                   }}
-                >
-                  <img
-                    src={model.image}
-                    alt={model.name}
-                    style={{
-                      height: "120px",
-                      objectFit: "contain",
-                      marginBottom: "-40px",
-                    }}
-                  />
-                </div>
-                <CardContent
+                />
+              </div>
+              <CardContent
+                sx={{
+                  width: "100%",
+                  textAlign: "center",
+                  paddingTop: 3,
+                }}
+              >
+                <Typography
+                  variant="h6"
                   sx={{
-                    width: "100%",
-                    textAlign: "center",
-                    paddingTop: 3,
+                    fontWeight: "bold",
+                    fontSize: "1.2rem",
                   }}
                 >
-                  <Typography
-                    variant="h6"
-                    sx={{
-                      fontWeight: "bold",
-                      fontSize: "1.2rem",
-                    }}
-                  >
-                    {model.name}
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Link>
+                  {model.name}
+                </Typography>
+              </CardContent>
+            </Card>
           ))
         ) : (
           <Typography
@@ -240,6 +258,22 @@ export default function Agents() {
           </Typography>
         )}
       </Container>
+
+      {selectedModel && (
+        <Dialog open={openDialog} onClose={handleCloseDialog}>
+          <DialogTitle>{selectedModel.name}</DialogTitle>
+          <DialogContent>
+            <Typography variant="body1" sx={{ whiteSpace: "pre-line" }}>
+              {selectedModel.details}
+            </Typography>
+          </DialogContent>
+          <DialogActions>
+            <MuiButton onClick={handleCloseDialog} color="primary">
+              Close
+            </MuiButton>
+          </DialogActions>
+        </Dialog>
+      )}
     </div>
   );
 }
