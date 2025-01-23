@@ -27,6 +27,7 @@ import {
   DialogContent,
   DialogTitle,
   Box,
+  TextField,
 } from "@mui/material";
 import Link from "next/link";
 import ScrollingImages from "./components/ScrollingImages";
@@ -90,13 +91,13 @@ export default function Home() {
   };
 
   return (
-    <div className="bg-white min-h-screen">
+    <div className="bg-white min-h-screen mt-10">
       <AppBar
         sx={{
           backgroundColor: "white",
           color: "black",
           boxShadow: "none",
-          position: "relative",
+          position: "fixed",
         }}
         className="border-b"
       >
@@ -297,11 +298,12 @@ export default function Home() {
         </Typography>
         <Typography
           variant="body1"
-          className="text-gray-600 mb-8"
+          className="text-gray-600 "
           sx={{
             maxWidth: "600px",
             textAlign: "center",
             lineHeight: "1.6rem",
+            marginBottom: 4,
           }}
         >
           Comprehensive AI agent development solutions for your business.
@@ -479,6 +481,94 @@ export default function Home() {
             ))}
           </div>
         </Container>
+      </section>
+
+      <section
+        id="contact-us"
+        className="bg-gray-100 h-screen flex flex-col items-center justify-center"
+      >
+        <Typography variant="h4" className="text-gray-800 font-bold">
+          Contact Us
+        </Typography>
+
+        <Typography
+          variant="body1"
+          className="text-gray-600"
+          sx={{
+            maxWidth: "600px",
+            textAlign: "center",
+            lineHeight: "1.6rem",
+            marginTop: 2,
+            marginBottom: 4
+          }}
+        >
+          Let's discuss how we can help transform your business.
+        </Typography>
+
+        <Card
+          className="shadow-lg"
+          sx={{
+            width: "100%",
+            maxWidth: "600px",
+            padding: "2rem",
+            borderRadius: "0.75rem",
+            backgroundColor: "white",
+          }}
+        >
+          <form>
+            <Box
+              sx={{
+                display: "flex",
+                gap: "1rem",
+                marginBottom: "1.5rem",
+              }}
+            >
+              <TextField
+                label="Name"
+                fullWidth
+                variant="outlined"
+              />
+              <TextField
+                label="Email"
+                fullWidth
+                variant="outlined"
+              />
+            </Box>
+
+            <Box sx={{ marginBottom: "1.5rem" }}>
+              <TextField
+                label="Subject"
+                fullWidth
+                variant="outlined"
+              />
+            </Box>
+
+            <Box sx={{ marginBottom: "1.5rem" }}>
+              <TextField
+                label="Message"
+                fullWidth
+                variant="outlined"
+                multiline
+                minRows={3}
+              />
+            </Box>
+
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              fullWidth
+              sx={{
+                backgroundColor: "#5975fa",
+                "&:hover": {
+                  backgroundColor: "#357ABD",
+                },
+              }}
+            >
+              Send Message
+            </Button>
+          </form>
+        </Card>
       </section>
 
       <footer className="bg-[#5975fa] pt-4 pb-4">
