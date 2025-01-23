@@ -487,7 +487,17 @@ export default function Home() {
         id="contact-us"
         className="bg-gray-100 h-screen flex flex-col items-center justify-center"
       >
-        <Typography variant="h4" className="text-gray-800 font-bold">
+        <Typography
+          variant="h4"
+          className="text-center text-black"
+          sx={{
+            fontSize: {
+              xs: "2rem",
+              md: "2.5rem",
+              fontWeight: "bolder",
+            },
+          }}
+        >
           Contact Us
         </Typography>
 
