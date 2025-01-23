@@ -38,7 +38,7 @@ export default function Home() {
     {
       name: "Hamza Rehman",
       position: "Founder",
-      imageUrl: "/hamza.jpeg",
+      imageUrl: "/hamza.jpg",
       linkedinUrl: "https://www.linkedin.com/in/hamzarehman4",
       githubUrl: "https://github.com/masterwithhamza",
       email: "mailto:hamza.rehman.shaikh@gmail.com",
@@ -46,7 +46,7 @@ export default function Home() {
     {
       name: "Abdullah Bin Altaf",
       position: "Co-Founder",
-      imageUrl: "/abdullah.jpeg",
+      imageUrl: "/abdullah.jpg",
       linkedinUrl: "https://www.linkedin.com/in/abdullah-k18",
       githubUrl: "https://github.com/abdullah-k18",
       email: "mailto:abdullahkoraal@gmail.com",
