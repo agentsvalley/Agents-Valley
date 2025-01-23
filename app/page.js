@@ -502,7 +502,7 @@ export default function Home() {
             marginBottom: 4
           }}
         >
-          Let's discuss how we can help transform your business.
+          Let&apos;s discuss how we can help transform your business.
         </Typography>
 
         <Card
