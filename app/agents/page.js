@@ -92,8 +92,14 @@ export default function Agents() {
                 <Typography
                   variant="h6"
                   component="div"
-                  sx={{ fontWeight: "800" }}
-                  className="text-[#5975fa] text-base sm:text-xl"
+                  sx={{
+                    fontWeight: "800",
+                    background:
+                      "linear-gradient(to right, #D3A8FF, #4A90E2, #4DE0D1)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                  }}
+                  className="text-base sm:text-xl"
                 >
                   AgentsValley
                 </Typography>
