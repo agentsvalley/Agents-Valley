@@ -20,7 +20,7 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
-  Box
+  Box,
 } from "@mui/material";
 import Link from "next/link";
 import ScrollingImages from "./components/ScrollingImages";
@@ -33,12 +33,16 @@ export default function Home() {
       position: "Founder",
       imageUrl: "/hamza.jpeg",
       linkedinUrl: "https://www.linkedin.com/in/hamzarehman4",
+      githubUrl: "https://github.com/masterwithhamza",
+      email: "mailto:hamza.rehman.shaikh@gmail.com",
     },
     {
       name: "Abdullah Bin Altaf",
       position: "Co-Founder",
       imageUrl: "/abdullah.jpeg",
       linkedinUrl: "https://www.linkedin.com/in/abdullah-k18",
+      githubUrl: "https://github.com/abdullah-k18",
+      email: "mailto:abdullahkoraal@gmail.com",
     },
   ];
 
@@ -92,7 +96,6 @@ export default function Home() {
               </div>
             </Link>
 
-            {/* Navigation Items */}
             <Box className="ml-auto flex gap-6 items-center">
               <Link href="#home" passHref>
                 <Typography
@@ -100,7 +103,11 @@ export default function Home() {
                   sx={{
                     fontWeight: "600",
                     cursor: "pointer",
-                    "&:hover": { color: "#4A90E2" }, // Optional hover effect
+                    color: "#4A90E2",
+                    transition: "transform 0.3s ease-in-out",
+                      "&:hover": {
+                        transform: "scale(1.07)",
+                      },
                   }}
                 >
                   Home
@@ -113,7 +120,11 @@ export default function Home() {
                   sx={{
                     fontWeight: "600",
                     cursor: "pointer",
-                    "&:hover": { color: "#4A90E2" }, // Optional hover effect
+                    color: "#4A90E2",
+                    transition: "transform 0.3s ease-in-out",
+                      "&:hover": {
+                        transform: "scale(1.07)",
+                      },
                   }}
                 >
                   Services
@@ -126,7 +137,11 @@ export default function Home() {
                   sx={{
                     fontWeight: "600",
                     cursor: "pointer",
-                    "&:hover": { color: "#4A90E2" }, // Optional hover effect
+                    color: "#4A90E2",
+                    transition: "transform 0.3s ease-in-out",
+                      "&:hover": {
+                        transform: "scale(1.07)",
+                      },
                   }}
                 >
                   Team
@@ -139,7 +154,11 @@ export default function Home() {
                   sx={{
                     fontWeight: "600",
                     cursor: "pointer",
-                    "&:hover": { color: "#4A90E2" }, // Optional hover effect
+                    color: "#4A90E2",
+                    transition: "transform 0.3s ease-in-out",
+                      "&:hover": {
+                        transform: "scale(1.07)",
+                      },
                   }}
                 >
                   Contact Us
@@ -207,7 +226,8 @@ export default function Home() {
           <DialogTitle>Coming Soon!</DialogTitle>
           <DialogContent>
             <Typography variant="body1">
-              The "Start Building" feature is coming soon. Stay tuned!
+              The &ldquo;Start Building&ldquo; feature is coming soon. Stay
+              tuned!
             </Typography>
           </DialogContent>
           <DialogActions>
@@ -245,12 +265,13 @@ export default function Home() {
             {teamMembers.map((member, index) => (
               <Card
                 key={index}
-                className="shadow-lg bg-gray-100 transform transition-transform duration-300 ease-in-out hover:scale-105 cursor-pointer"
+                className="shadow-lg cursor-pointer"
                 sx={{
                   padding: "1.5rem",
                   borderRadius: "0.75rem",
                   textAlign: "center",
                   color: "#caddfe",
+                  backgroundColor: "#f7f7f7",
                 }}
               >
                 <Avatar
@@ -268,11 +289,19 @@ export default function Home() {
                     variant="h6"
                     sx={{
                       fontWeight: "bold",
-                      color: "#5975fa",
-                      marginBottom: 1,
+                      color: "black",
                     }}
                   >
                     {member.name}
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      color: "black",
+                      marginBottom: 1,
+                    }}
+                  >
+                    {member.position}
                   </Typography>
                   <MuiLink
                     href={member.linkedinUrl}
@@ -282,9 +311,47 @@ export default function Home() {
                       color: "black",
                       display: "inline-flex",
                       alignItems: "center",
+                      marginRight: 1,
+                      transition: "transform 0.3s ease-in-out",
+                      "&:hover": {
+                        transform: "scale(1.1)",
+                      },
                     }}
                   >
-                    <LinkedInIcon />
+                    <LinkedInIcon className="text-[#5975fa]" />
+                  </MuiLink>
+                  <MuiLink
+                    href={member.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    sx={{
+                      color: "black",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      marginRight: 1,
+                      transition: "transform 0.3s ease-in-out",
+                      "&:hover": {
+                        transform: "scale(1.1)",
+                      },
+                    }}
+                  >
+                    <GitHubIcon className="text-[#5975fa]" />
+                  </MuiLink>
+                  <MuiLink
+                    href={member.email}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    sx={{
+                      color: "black",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      transition: "transform 0.3s ease-in-out",
+                      "&:hover": {
+                        transform: "scale(1.1)",
+                      },
+                    }}
+                  >
+                    <EmailIcon className="text-[#5975fa]" />
                   </MuiLink>
                 </CardContent>
               </Card>
