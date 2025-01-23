@@ -33,6 +33,13 @@ export default function Agents() {
       link: "/ubuntu-terminal-agent",
       image: "/ubuntu.svg",
     },
+    {
+      name: "Sensitive Data Checker",
+      category: "files",
+      bgColor: "linear-gradient(to right, #a8a8a8, #d6d6d6)",
+      link: "/sensitive-data-checker",
+      image: "/sensitive.png",
+    },
   ]);
   const [openDialog, setOpenDialog] = useState(false);
   const [selectedModel, setSelectedModel] = useState(null);
