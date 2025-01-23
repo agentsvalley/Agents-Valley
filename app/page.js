@@ -5,7 +5,13 @@ import LanguageIcon from "@mui/icons-material/Language";
 import EmailIcon from "@mui/icons-material/Email";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import YouTubeIcon from "@mui/icons-material/YouTube";
-import { Bot, Sparkles } from "lucide-react";
+import {
+  Bot,
+  Sparkles,
+  FileSearch,
+  Workflow,
+  MessagesSquare,
+} from "lucide-react";
 import {
   Typography,
   Container,
@@ -43,6 +49,33 @@ export default function Home() {
       linkedinUrl: "https://www.linkedin.com/in/abdullah-k18",
       githubUrl: "https://github.com/abdullah-k18",
       email: "mailto:abdullahkoraal@gmail.com",
+    },
+  ];
+
+  const services = [
+    {
+      logo: <Bot size={40} color="white" />,
+      title: "Custom Agent Development",
+      description:
+        "Tailored AI agents designed specifically for your business needs and workflows.",
+    },
+    {
+      logo: <Workflow size={40} color="white" />,
+      title: "Workflow Automation",
+      description:
+        "Streamline your processes with intelligent automation solutions.",
+    },
+    {
+      logo: <MessagesSquare size={40} color="white" />,
+      title: "Conversational AI",
+      description:
+        "Build sophisticated chatbots and virtual assistants for customer service.",
+    },
+    {
+      logo: <FileSearch size={40} color="white" />,
+      title: "RAG (Retrieval-Augmented Generation)",
+      description:
+        "Combine powerful retrieval systems with generative AI to enhance context-based responses.",
     },
   ];
 
@@ -105,9 +138,9 @@ export default function Home() {
                     cursor: "pointer",
                     color: "#4A90E2",
                     transition: "transform 0.3s ease-in-out",
-                      "&:hover": {
-                        transform: "scale(1.07)",
-                      },
+                    "&:hover": {
+                      transform: "scale(1.07)",
+                    },
                   }}
                 >
                   Home
@@ -122,9 +155,9 @@ export default function Home() {
                     cursor: "pointer",
                     color: "#4A90E2",
                     transition: "transform 0.3s ease-in-out",
-                      "&:hover": {
-                        transform: "scale(1.07)",
-                      },
+                    "&:hover": {
+                      transform: "scale(1.07)",
+                    },
                   }}
                 >
                   Services
@@ -139,9 +172,9 @@ export default function Home() {
                     cursor: "pointer",
                     color: "#4A90E2",
                     transition: "transform 0.3s ease-in-out",
-                      "&:hover": {
-                        transform: "scale(1.07)",
-                      },
+                    "&:hover": {
+                      transform: "scale(1.07)",
+                    },
                   }}
                 >
                   Team
@@ -156,9 +189,9 @@ export default function Home() {
                     cursor: "pointer",
                     color: "#4A90E2",
                     transition: "transform 0.3s ease-in-out",
-                      "&:hover": {
-                        transform: "scale(1.07)",
-                      },
+                    "&:hover": {
+                      transform: "scale(1.07)",
+                    },
                   }}
                 >
                   Contact Us
@@ -244,11 +277,99 @@ export default function Home() {
         </Dialog>
       </section>
 
+      <section
+        id="services"
+        className="bg-gray-100 h-screen flex flex-col items-center justify-center"
+      >
+        <Typography
+          variant="h4"
+          className="text-center text-black"
+          sx={{
+            fontSize: {
+              xs: "2rem",
+              md: "2.5rem",
+              marginBottom: 15,
+              fontWeight: "bolder",
+            },
+          }}
+        >
+          Our Services
+        </Typography>
+        <Typography
+          variant="body1"
+          className="text-gray-600 mb-8"
+          sx={{
+            maxWidth: "600px",
+            textAlign: "center",
+            lineHeight: "1.6rem",
+          }}
+        >
+          Comprehensive AI agent development solutions for your business.
+        </Typography>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            gap: "1.5rem",
+            padding: "0 1rem",
+          }}
+        >
+          {services.map((service, index) => (
+            <Card
+              key={index}
+              className="shadow-lg cursor-pointer"
+              sx={{
+                backgroundColor: "white",
+                padding: "1.5rem",
+                borderRadius: "0.75rem",
+                textAlign: "left",
+                minWidth: "250px",
+                maxWidth: "300px",
+                transition: "transform 0.3s ease-in-out",
+                "&:hover": {
+                  transform: "scale(1.05)",
+                },
+              }}
+            >
+              <Box
+                sx={{
+                  marginBottom: "1rem",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: "60px",
+                  height: "60px",
+                  borderRadius: "10%",
+                  background:
+                    "linear-gradient(to right, #D3A8FF, #4A90E2, #4DE0D1)",
+                }}
+              >
+                {service.logo}
+              </Box>
+              <Typography
+                variant="h6"
+                sx={{ fontWeight: "bold", marginBottom: "0.5rem" }}
+                className="text-gray-800"
+              >
+                {service.title}
+              </Typography>
+              <Typography
+                variant="body2"
+                sx={{ color: "gray" }}
+                className="text-gray-600"
+              >
+                {service.description}
+              </Typography>
+            </Card>
+          ))}
+        </Box>
+      </section>
+
       <section id="team" className="py-16 bg-white">
         <Container>
           <Typography
             variant="h4"
-            className="text-center text-[#5975fa]"
+            className="text-center text-black"
             sx={{
               fontSize: {
                 xs: "2rem",
@@ -318,7 +439,7 @@ export default function Home() {
                       },
                     }}
                   >
-                    <LinkedInIcon className="text-[#5975fa]" />
+                    <LinkedInIcon className="text-blue-500" />
                   </MuiLink>
                   <MuiLink
                     href={member.githubUrl}
@@ -335,7 +456,7 @@ export default function Home() {
                       },
                     }}
                   >
-                    <GitHubIcon className="text-[#5975fa]" />
+                    <GitHubIcon className="text-[black]" />
                   </MuiLink>
                   <MuiLink
                     href={member.email}
@@ -351,7 +472,7 @@ export default function Home() {
                       },
                     }}
                   >
-                    <EmailIcon className="text-[#5975fa]" />
+                    <EmailIcon className="text-[#EA4335]" />
                   </MuiLink>
                 </CardContent>
               </Card>
@@ -360,59 +481,9 @@ export default function Home() {
         </Container>
       </section>
 
-      <footer className="bg-[#5975fa] pt-8 pb-4">
+      <footer className="bg-[#5975fa] pt-4 pb-4">
         <Container>
           <div className="flex flex-col items-center">
-            <div className="mb-4 w-full max-w-md">
-              <Typography
-                variant="h6"
-                className="text-white text-center"
-                sx={{ fontWeight: "bold", marginBottom: 4 }}
-              >
-                Contact Us
-              </Typography>
-              <form>
-                <div className="mb-4">
-                  <input
-                    type="text"
-                    id="name"
-                    placeholder="Your Name"
-                    className="w-full border border-white rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-white bg-transparent text-white"
-                  />
-                </div>
-                <div className="mb-4">
-                  <input
-                    type="email"
-                    id="email"
-                    placeholder="Your Email"
-                    className="w-full border border-white rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-white bg-transparent text-white"
-                  />
-                </div>
-                <div className="mb-4">
-                  <textarea
-                    id="message"
-                    placeholder="Your Message"
-                    rows="4"
-                    className="w-full border border-white rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-white bg-transparent text-white"
-                  ></textarea>
-                </div>
-                <button
-                  type="submit"
-                  className="bg-white text-[#5975fa] font-bold py-2 px-4 rounded-md transform transition-transform duration-300 hover:scale-110"
-                >
-                  Submit
-                </button>
-              </form>
-            </div>
-
-            <Typography
-              variant="body2"
-              className="text-white text-center"
-              sx={{ marginBottom: 2 }}
-            >
-              &copy; 2024 Agents Valley. All rights reserved.
-            </Typography>
-
             <div className="flex items-center space-x-4">
               <Link
                 href="https://agentsvalley.com/"
@@ -455,6 +526,13 @@ export default function Home() {
                 <YouTubeIcon />
               </Link>
             </div>
+            <Typography
+              variant="body2"
+              className="text-white text-center"
+              sx={{ marginTop: 1 }}
+            >
+              &copy; 2025 Agents Valley. All rights reserved.
+            </Typography>
           </div>
         </Container>
       </footer>
