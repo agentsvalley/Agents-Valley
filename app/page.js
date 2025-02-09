@@ -28,10 +28,16 @@ import {
   DialogTitle,
   Box,
   TextField,
+  IconButton,
+  Drawer,
+  List,
+  ListItem,
+  ListItemText,
 } from "@mui/material";
 import Link from "next/link";
 import ScrollingImages from "./components/ScrollingImages";
 import { useState } from "react";
+import MenuIcon from "@mui/icons-material/Menu";
 
 export default function Home() {
   const teamMembers = [
@@ -81,6 +87,7 @@ export default function Home() {
   ];
 
   const [open, setOpen] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -90,24 +97,42 @@ export default function Home() {
     setOpen(false);
   };
 
+  const toggleDrawer = (state) => () => {
+    setDrawerOpen(state);
+  };
+
+  const navItems = [
+    { text: "Home", href: "#home" },
+    { text: "Tools", href: "/tools" },
+    { text: "Playground", href: "/playground" },
+    { text: "Agents", href: "/agents" },
+    { text: "Services", href: "#services" },
+  ];
+
   return (
-    <div className="bg-white min-h-screen mt-10">
+    <div className="bg-[#02061a] min-h-screen mt-10">
       <AppBar
         sx={{
-          backgroundColor: "white",
-          color: "black",
+          backgroundColor: "#5975fa",
+          color: "white",
           boxShadow: "none",
           position: "fixed",
         }}
-        className="border-b"
       >
         <Container>
-          <Toolbar
-            disableGutters
-            className="flex justify-between flex-wrap sm:flex-nowrap"
-          >
+          <Toolbar disableGutters className="flex justify-between">
             <Link href="/" passHref>
-              <div className="flex items-center cursor-pointer mb-2 sm:mb-0">
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  cursor: "pointer",
+                  backgroundColor: "white",
+                  padding: "6px 12px",
+                  borderRadius: "8px",
+                  boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
+                }}
+              >
                 <img
                   src="/logo.png"
                   alt="Logo"
@@ -127,78 +152,53 @@ export default function Home() {
                 >
                   AgentsValley
                 </Typography>
-              </div>
+              </Box>
             </Link>
 
-            <Box className="ml-auto flex gap-6 items-center">
-              <Link href="#home" passHref>
-                <Typography
-                  variant="body1"
-                  sx={{
-                    fontWeight: "600",
-                    cursor: "pointer",
-                    color: "#4A90E2",
-                    transition: "transform 0.3s ease-in-out",
-                    "&:hover": {
-                      transform: "scale(1.07)",
-                    },
-                  }}
-                >
-                  Home
-                </Typography>
-              </Link>
-
-              <Link href="#services" passHref>
-                <Typography
-                  variant="body1"
-                  sx={{
-                    fontWeight: "600",
-                    cursor: "pointer",
-                    color: "#4A90E2",
-                    transition: "transform 0.3s ease-in-out",
-                    "&:hover": {
-                      transform: "scale(1.07)",
-                    },
-                  }}
-                >
-                  Services
-                </Typography>
-              </Link>
-
-              <Link href="#team" passHref>
-                <Typography
-                  variant="body1"
-                  sx={{
-                    fontWeight: "600",
-                    cursor: "pointer",
-                    color: "#4A90E2",
-                    transition: "transform 0.3s ease-in-out",
-                    "&:hover": {
-                      transform: "scale(1.07)",
-                    },
-                  }}
-                >
-                  Team
-                </Typography>
-              </Link>
-
-              <Link href="#contact-us" passHref>
-                <Typography
-                  variant="body1"
-                  sx={{
-                    fontWeight: "600",
-                    cursor: "pointer",
-                    color: "#4A90E2",
-                    transition: "transform 0.3s ease-in-out",
-                    "&:hover": {
-                      transform: "scale(1.07)",
-                    },
-                  }}
-                >
-                  Contact Us
-                </Typography>
-              </Link>
+            <Box className="hidden sm:flex gap-6 items-center">
+              {navItems.map((item, index) => (
+                <Link key={index} href={item.href} passHref>
+                  <Typography
+                    variant="body1"
+                    sx={{
+                      fontWeight: "600",
+                      cursor: "pointer",
+                      color: "white",
+                      transition: "transform 0.3s ease-in-out",
+                      "&:hover": { transform: "scale(1.07)" },
+                    }}
+                  >
+                    {item.text}
+                  </Typography>
+                </Link>
+              ))}
             </Box>
+
+            <IconButton
+              edge="end"
+              color="inherit"
+              aria-label="menu"
+              onClick={toggleDrawer(true)}
+              className="sm:hidden"
+            >
+              <MenuIcon />
+            </IconButton>
+
+            <Drawer anchor="right" open={open} onClose={toggleDrawer(false)}>
+              <Box
+                sx={{ width: 250, padding: "1rem" }}
+                role="presentation"
+                onClick={toggleDrawer(false)}
+              >
+                <List>
+                  {navItems.map((item, index) => (
+                    <ListItem button key={index} component="a" href={item.href}>
+                      <ListItemText primary={item.text} />
+                    </ListItem>
+                  ))}
+                </List>
+              </Box>
+            </Drawer>
           </Toolbar>
         </Container>
       </AppBar>
@@ -206,6 +206,9 @@ export default function Home() {
       <section
         id="home"
         className="justify-center items-center py-12 lg:h-screen"
+        style={{
+          backgroundImage: "url('/bg.jpg')",
+        }}
       >
         <Container className="flex justify-center items-center text-center mb-20">
           <div className="flex flex-col gap-10">
@@ -218,7 +221,7 @@ export default function Home() {
 
             <Typography
               variant="h3"
-              className="text-black font-bold"
+              className="text-[#5975fa] font-bold"
               sx={{
                 fontSize: { xs: "1.8rem", md: "2.5rem", lg: "3rem" },
                 fontWeight: "bolder",
@@ -229,7 +232,7 @@ export default function Home() {
 
             <Typography
               variant="body1"
-              className="text-black"
+              className="text-gray-600"
               sx={{ fontSize: { xs: "1rem", md: "1.2rem" } }}
             >
               Discover a marketplace where businesses and individuals unlock the
@@ -280,11 +283,14 @@ export default function Home() {
 
       <section
         id="services"
-        className="bg-gray-100 h-screen flex flex-col items-center justify-center"
+        className="bg-[#02061a] min-h-screen flex flex-col items-center justify-center bg-center"
+        style={{
+          backgroundImage: "url('/bg.jpg')",
+        }}
       >
         <Typography
           variant="h4"
-          className="text-center text-black"
+          className="text-center text-[#5975fa]"
           sx={{
             fontSize: {
               xs: "2rem",
@@ -298,7 +304,7 @@ export default function Home() {
         </Typography>
         <Typography
           variant="body1"
-          className="text-gray-600 "
+          className="text-gray-600"
           sx={{
             maxWidth: "600px",
             textAlign: "center",
@@ -311,6 +317,7 @@ export default function Home() {
         <Box
           sx={{
             display: "flex",
+            flexDirection: { xs: "column", md: "row" },
             justifyContent: "space-between",
             gap: "1.5rem",
             padding: "0 1rem",
@@ -367,11 +374,17 @@ export default function Home() {
         </Box>
       </section>
 
-      <section id="team" className="py-16 bg-white">
+      <section
+        id="team"
+        className="py-16 bg-[#02061a] bg-center"
+        style={{
+          backgroundImage: "url('/bg.jpg')",
+        }}
+      >
         <Container>
           <Typography
             variant="h4"
-            className="text-center text-black"
+            className="text-center text-[#5975fa]"
             sx={{
               fontSize: {
                 xs: "2rem",
@@ -394,7 +407,7 @@ export default function Home() {
                   borderRadius: "0.75rem",
                   textAlign: "center",
                   color: "#caddfe",
-                  backgroundColor: "#f7f7f7",
+                  backgroundColor: "white",
                 }}
               >
                 <Avatar
@@ -485,11 +498,14 @@ export default function Home() {
 
       <section
         id="contact-us"
-        className="bg-gray-100 h-screen flex flex-col items-center justify-center"
+        className="bg-[#02061a] h-screen flex flex-col items-center justify-center"
+        style={{
+          backgroundImage: "url('/bg.jpg')",
+        }}
       >
         <Typography
           variant="h4"
-          className="text-center text-black"
+          className="text-center text-[#5975fa]"
           sx={{
             fontSize: {
               xs: "2rem",
@@ -509,7 +525,7 @@ export default function Home() {
             textAlign: "center",
             lineHeight: "1.6rem",
             marginTop: 2,
-            marginBottom: 4
+            marginBottom: 4,
           }}
         >
           Let&apos;s discuss how we can help transform your business.
@@ -533,24 +549,12 @@ export default function Home() {
                 marginBottom: "1.5rem",
               }}
             >
-              <TextField
-                label="Name"
-                fullWidth
-                variant="outlined"
-              />
-              <TextField
-                label="Email"
-                fullWidth
-                variant="outlined"
-              />
+              <TextField label="Name" fullWidth variant="outlined" />
+              <TextField label="Email" fullWidth variant="outlined" />
             </Box>
 
             <Box sx={{ marginBottom: "1.5rem" }}>
-              <TextField
-                label="Subject"
-                fullWidth
-                variant="outlined"
-              />
+              <TextField label="Subject" fullWidth variant="outlined" />
             </Box>
 
             <Box sx={{ marginBottom: "1.5rem" }}>
