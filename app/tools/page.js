@@ -22,20 +22,53 @@ import { ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import { useMediaQuery } from "@mui/material";
-import { Description } from "@mui/icons-material";
 
-export default function Agents() {
+export default function Tools() {
   const [searchQuery, setSearchQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState("all");
   const [anchorEl, setAnchorEl] = useState(null);
   const [models, setModels] = useState([
     {
-      name: "Ubuntu Terminal Agent",
-      category: "linux",
+      name: "Food Recognizer",
+      category: "Image-Recognition",
       bgColor: "linear-gradient(to right, #f26a3b, #ffd2b3)",
-      link: "/ubuntu-terminal-agent",
-      image: "/ubuntu.svg",
-      Description: "Prompt and let the agent run the terminal command for you."
+      link: "/food-recognizer",
+      image: "/food.svg",
+      description:
+        "Upload a food image, app will display food type predictions.",
+    },
+    {
+      name: "Flower Identifier",
+      category: "Image-Recognition",
+      bgColor: "linear-gradient(to right, #ff6ec7, #ffd9ec)",
+      link: "/flower-identifier",
+      image: "/flower.svg",
+      description: "Identify any flower instantly with a simple snap.",
+    },
+    {
+      name: "Plant Disease Identifier",
+      category: "Image-Recognition",
+      bgColor: "linear-gradient(to right, #8B5A2B, #E3C19E)",
+      link: "/plant-disease-identifier",
+      image: "/plant.svg",
+      description: "Identify plant diseases and get remedies and care tips.",
+    },
+    {
+      name: "Animal Species Identifier",
+      category: "Image-Recognition",
+      bgColor: "linear-gradient(to right, #F5D76E, #FFF3C0)",
+      link: "/animal-species-identifier",
+      image: "/animal.svg",
+      description:
+        "Discover animal species along with fascinating habitat info.",
+    },
+    {
+      name: "Sensitive Data Checker",
+      category: "files",
+      bgColor: "linear-gradient(to right, #a8a8a8, #d6d6d6)",
+      link: "https://agent.ai/agent/sensitive-data-checker",
+      image: "/sensitive.png",
+      description: "This tells you about sensitive data in your files."
     },
   ]);
   const [openDialog, setOpenDialog] = useState(false);
@@ -57,18 +90,8 @@ export default function Agents() {
     setAnchorEl(null);
   };
 
-  const handleCardClick = (model) => {
-    setSelectedModel(model);
-    setOpenDialog(true);
-  };
-
-  const handleCloseDialog = () => {
-    setOpenDialog(false);
-    setSelectedModel(null);
-  };
-
   return (
-    <div className="min-h-screen" style={{ backgroundColor: "white" }}>
+    <div className="min-h-screen" style={{ backgroundColor: "#f3f4f6" }}>
       <AppBar
         position="fixed"
         sx={{
@@ -76,7 +99,6 @@ export default function Agents() {
           color: "black",
           boxShadow: "none",
         }}
-        className="border-b"
       >
         <Toolbar>
           <Container className="flex justify-between items-center">
@@ -124,7 +146,7 @@ export default function Agents() {
                     fontWeight: "bold",
                   }}
                 >
-                  All Agents
+                  All Tools
                 </Button>
                 <div onClick={handleMenuOpen} style={{ position: "relative" }}>
                   <Button
@@ -156,9 +178,14 @@ export default function Agents() {
                     }}
                   >
                     <MenuItem
-                      onClick={() => setActiveCategory("linux")}
+                      onClick={() => setActiveCategory("Image-Recognition")}
                     >
-                      Ubuntu
+                      Image Recognition
+                    </MenuItem>
+                    <MenuItem
+                      onClick={() => setActiveCategory("files")}
+                    >
+                      Files
                     </MenuItem>
                   </Menu>
                 </div>
@@ -177,7 +204,7 @@ export default function Agents() {
       >
         <TextField
           variant="outlined"
-          placeholder="Search by Agent name or Category"
+          placeholder="Search by Tool name or Category"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           sx={{
@@ -272,26 +299,10 @@ export default function Agents() {
               gridColumn: "1 / -1",
             }}
           >
-            No agents found matching your search result
+            No tools found matching your search result
           </Typography>
         )}
       </Container>
-
-      {selectedModel && (
-        <Dialog open={openDialog} onClose={handleCloseDialog}>
-          <DialogTitle>{selectedModel.name}</DialogTitle>
-          <DialogContent>
-            <Typography variant="body1" sx={{ whiteSpace: "pre-line" }}>
-              {selectedModel.details}
-            </Typography>
-          </DialogContent>
-          <DialogActions>
-            <MuiButton onClick={handleCloseDialog} color="primary">
-              Close
-            </MuiButton>
-          </DialogActions>
-        </Dialog>
-      )}
     </div>
   );
 }

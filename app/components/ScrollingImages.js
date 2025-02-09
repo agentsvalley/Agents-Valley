@@ -4,7 +4,9 @@ import { Container, Typography } from "@mui/material";
 
 export default function ScrollingImages() {
   return (
-    <section id="scrolling-images" className=" bg-gray-100">
+    <section id="scrolling-images" className=" bg-[#02061a]" style={{
+      backgroundImage: "url('/bg.jpg')",
+    }}>
       <Container>
         <div className="overflow-hidden relative">
           <div
@@ -32,7 +34,7 @@ export default function ScrollingImages() {
             ].map((image, index) => (
               <div
                 key={index}
-                className="min-w-[150px] min-h-[150px] flex-shrink-0 bg-gray-100 rounded-md overflow-hidden flex items-center justify-center"
+                className="min-w-[150px] min-h-[150px] flex-shrink-0 overflow-hidden flex items-center justify-center"
               >
                 <img
                   src={image}

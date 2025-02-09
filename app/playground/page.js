@@ -22,21 +22,45 @@ import { ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import { useMediaQuery } from "@mui/material";
-import { Description } from "@mui/icons-material";
 
-export default function Agents() {
+export default function Playground() {
   const [searchQuery, setSearchQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState("all");
   const [anchorEl, setAnchorEl] = useState(null);
   const [models, setModels] = useState([
     {
-      name: "Ubuntu Terminal Agent",
-      category: "linux",
-      bgColor: "linear-gradient(to right, #f26a3b, #ffd2b3)",
-      link: "/ubuntu-terminal-agent",
-      image: "/ubuntu.svg",
-      Description: "Prompt and let the agent run the terminal command for you."
+      name: "FLUX.1 Dev",
+      category: "Text-to-Image",
+      bgColor: "linear-gradient(to right, #ff7e5f, #feb47b)",
+      link: "/flux.1-dev",
+      image: "/image.svg",
+      description: "Generate high quality images with FLUX.1 Dev."
     },
+    {
+      name: "Sldr Flux NSFW v2 Studio",
+      category: "Text-to-Image",
+      bgColor: "linear-gradient(to right, #6a11cb, #2575fc)",
+      link: "/sldr-flux-nsfw-v2-studio",
+      image: "/image.svg",
+      description: "Generate high quality images with Sldr Flux NSFW v2 studio."
+    },
+    {
+      name: "Flux Realism Lora",
+      category: "Text-to-Image",
+      bgColor: "linear-gradient(to right, #00c6ff, #0072ff)",
+      link: "/flux-realism-lora",
+      image: "/image.svg",
+      description: "Generate high quality images with Flux Realism Lora."
+    },
+    {
+      name: "Stable Diffusion 3.5 Large",
+      category: "Text-to-Image",
+      bgColor: "linear-gradient(to right, #ff9a9e, #fad0c4)",
+      link: "/stable-diffusion-3.5-large",
+      image: "/image.svg",
+      description: "Generate high quality images with Stable Diffusion 3.5 Large."
+    }
+    
   ]);
   const [openDialog, setOpenDialog] = useState(false);
   const [selectedModel, setSelectedModel] = useState(null);
@@ -124,7 +148,7 @@ export default function Agents() {
                     fontWeight: "bold",
                   }}
                 >
-                  All Agents
+                  All Models
                 </Button>
                 <div onClick={handleMenuOpen} style={{ position: "relative" }}>
                   <Button
@@ -156,9 +180,9 @@ export default function Agents() {
                     }}
                   >
                     <MenuItem
-                      onClick={() => setActiveCategory("linux")}
+                      onClick={() => setActiveCategory("Text-to-Image")}
                     >
-                      Ubuntu
+                      Text-to-Image
                     </MenuItem>
                   </Menu>
                 </div>
@@ -177,7 +201,7 @@ export default function Agents() {
       >
         <TextField
           variant="outlined"
-          placeholder="Search by Agent name or Category"
+          placeholder="Search by Model name or Category"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           sx={{
@@ -272,7 +296,7 @@ export default function Agents() {
               gridColumn: "1 / -1",
             }}
           >
-            No agents found matching your search result
+            No models found matching your search result
           </Typography>
         )}
       </Container>
