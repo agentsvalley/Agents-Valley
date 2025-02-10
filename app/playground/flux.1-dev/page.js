@@ -55,7 +55,7 @@ export default function FluxDev() {
 
       <iframe
         src="https://agentsvalley-flux-1-dev-agents-valley.hf.space"
-        className="h-screen w-screen"
+        className="h-screen w-screen pt-14 lg:pt-16"
       ></iframe>
     </div>
   );

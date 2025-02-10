@@ -55,7 +55,7 @@ export default function FluxRealismLora() {
 
       <iframe
         src="https://agentsvalley-flux-realismlora-agents-valley.hf.space"
-        className="h-screen w-screen"
+        className="h-screen w-screen pt-14 lg:pt-16"
       ></iframe>
     </div>
   );

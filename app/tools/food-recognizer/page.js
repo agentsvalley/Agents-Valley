@@ -61,7 +61,7 @@ export default function FoodRecognizer() {
 
       <iframe
         src="https://agentsvalley-food-recognition-agent.hf.space"
-        className="h-screen w-screen"
+        className="h-screen w-screen pt-14 lg:pt-16"
       ></iframe>
     </div>
   );

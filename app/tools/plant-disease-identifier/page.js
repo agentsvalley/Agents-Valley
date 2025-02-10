@@ -61,7 +61,7 @@ export default function PlantDiseaseIdentifier() {
 
       <iframe
         src="https://agentsvalley-plant-disease-identifier.hf.space"
-        className="h-screen w-screen"
+        className="h-screen w-screen pt-14 lg:pt-16"
       ></iframe>
     </div>
   );

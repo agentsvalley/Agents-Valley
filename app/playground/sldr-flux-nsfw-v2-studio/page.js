@@ -55,7 +55,7 @@ export default function SldrFluxNsfwStudio() {
 
       <iframe
         src="https://agentsvalley-sldr-flux-nsfw-v2-studio-agents-valley.hf.space"
-        className="h-screen w-screen"
+        className="h-screen w-screen pt-14 lg:pt-16"
       ></iframe>
     </div>
   );
