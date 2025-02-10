@@ -32,7 +32,7 @@ export default function Playground() {
       name: "FLUX.1 Dev",
       category: "Text-to-Image",
       bgColor: "linear-gradient(to right, #ff7e5f, #feb47b)",
-      link: "/flux.1-dev",
+      link: "/playground/flux.1-dev",
       image: "/image.svg",
       description: "Generate high quality images with FLUX.1 Dev."
     },
@@ -40,7 +40,7 @@ export default function Playground() {
       name: "Sldr Flux NSFW v2 Studio",
       category: "Text-to-Image",
       bgColor: "linear-gradient(to right, #6a11cb, #2575fc)",
-      link: "/sldr-flux-nsfw-v2-studio",
+      link: "/playground/sldr-flux-nsfw-v2-studio",
       image: "/image.svg",
       description: "Generate high quality images with Sldr Flux NSFW v2 studio."
     },
@@ -48,7 +48,7 @@ export default function Playground() {
       name: "Flux Realism Lora",
       category: "Text-to-Image",
       bgColor: "linear-gradient(to right, #00c6ff, #0072ff)",
-      link: "/flux-realism-lora",
+      link: "/playground/flux-realism-lora",
       image: "/image.svg",
       description: "Generate high quality images with Flux Realism Lora."
     },
@@ -56,7 +56,7 @@ export default function Playground() {
       name: "Stable Diffusion 3.5 Large",
       category: "Text-to-Image",
       bgColor: "linear-gradient(to right, #ff9a9e, #fad0c4)",
-      link: "/stable-diffusion-3.5-large",
+      link: "/playground/stable-diffusion-3.5-large",
       image: "/image.svg",
       description: "Generate high quality images with Stable Diffusion 3.5 Large."
     }
