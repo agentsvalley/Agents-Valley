@@ -55,7 +55,7 @@ export default function StableDiffusionLarge() {
 
       <iframe
         src="https://agentsvalley-stable-diffusion-3-5-large-agents-valley.hf.space"
-        className="h-screen w-screen"
+        className="h-screen w-screen pt-14 lg:pt-16"
       ></iframe>
     </div>
   );
