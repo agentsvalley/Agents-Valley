@@ -97,9 +97,13 @@ export default function Home() {
     setOpen(false);
   };
 
-  const toggleDrawer = (state) => () => {
-    setDrawerOpen(state);
-  };
+  const handleDrawerOpen = () => {
+    setDrawerOpen(true);
+  }
+
+  const handleDrawerClose = () => {
+    setDrawerOpen(false);
+  }
 
   const navItems = [
     { text: "Home", href: "#home" },
@@ -178,17 +182,16 @@ export default function Home() {
               edge="end"
               color="inherit"
               aria-label="menu"
-              onClick={toggleDrawer(true)}
-              className="sm:hidden"
+              onClick={handleDrawerOpen}
+              className="lg:hidden"
             >
               <MenuIcon />
             </IconButton>
 
-            <Drawer anchor="right" open={open} onClose={toggleDrawer(false)}>
+            <Drawer anchor="right" open={drawerOpen} onClose={handleDrawerClose}>
               <Box
                 sx={{ width: 250, padding: "1rem" }}
                 role="presentation"
-                onClick={toggleDrawer(false)}
               >
                 <List>
                   {navItems.map((item, index) => (
