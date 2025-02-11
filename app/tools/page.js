@@ -66,7 +66,7 @@ export default function Tools() {
       name: "Sensitive Data Checker",
       category: "files",
       bgColor: "linear-gradient(to right, #a8a8a8, #d6d6d6)",
-      link: "https://agent.ai/agent/sensitive-data-checker",
+      link: "/tools/sensitive-data-checker",
       image: "/sensitive.png",
       description: "This tells you about sensitive data in your files."
     },
