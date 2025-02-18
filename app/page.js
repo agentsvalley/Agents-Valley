@@ -91,11 +91,11 @@ export default function Home() {
 
   const handleDrawerOpen = () => {
     setDrawerOpen(true);
-  }
+  };
 
   const handleDrawerClose = () => {
     setDrawerOpen(false);
-  }
+  };
 
   const navItems = [
     { text: "Home", href: "#home" },
@@ -180,11 +180,12 @@ export default function Home() {
               <MenuIcon />
             </IconButton>
 
-            <Drawer anchor="right" open={drawerOpen} onClose={handleDrawerClose}>
-              <Box
-                sx={{ width: 250, padding: "1rem" }}
-                role="presentation"
-              >
+            <Drawer
+              anchor="right"
+              open={drawerOpen}
+              onClose={handleDrawerClose}
+            >
+              <Box sx={{ width: 250, padding: "1rem" }} role="presentation">
                 <List>
                   {navItems.map((item, index) => (
                     <ListItem button key={index} component="a" href={item.href}>
@@ -371,7 +372,7 @@ export default function Home() {
 
       <section
         id="team"
-        className="py-16 bg-[#02061a] bg-center"
+        className="py-16 min-h-screen flex flex-col items-center justify-center"
         style={{
           backgroundImage: "url('/bg.jpg')",
         }}
@@ -392,102 +393,103 @@ export default function Home() {
             Meet Our Team
           </Typography>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-            {teamMembers.map((member, index) => (
-              <Card
-                key={index}
-                className="shadow-lg cursor-pointer"
+          {teamMembers.map((member, index) => (
+            <Card
+              key={index}
+              className="shadow-lg cursor-pointer"
+              sx={{
+                maxWidth: "400px",
+                width: "auto",
+                padding: "1.5rem",
+                borderRadius: "0.75rem",
+                textAlign: "center",
+                color: "#caddfe",
+                backgroundColor: "white",
+                margin: "0 auto",
+              }}
+            >
+              <Avatar
+                src={member.imageUrl}
+                alt={member.name}
                 sx={{
-                  padding: "1.5rem",
-                  borderRadius: "0.75rem",
-                  textAlign: "center",
-                  color: "#caddfe",
-                  backgroundColor: "white",
+                  width: "100px",
+                  height: "100px",
+                  margin: "0 auto",
+                  marginBottom: "1rem",
                 }}
-              >
-                <Avatar
-                  src={member.imageUrl}
-                  alt={member.name}
+              />
+              <CardContent>
+                <Typography
+                  variant="h6"
                   sx={{
-                    width: "100px",
-                    height: "100px",
-                    margin: "0 auto",
-                    marginBottom: "1rem",
+                    fontWeight: "bold",
+                    color: "black",
                   }}
-                />
-                <CardContent>
-                  <Typography
-                    variant="h6"
-                    sx={{
-                      fontWeight: "bold",
-                      color: "black",
-                    }}
-                  >
-                    {member.name}
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    sx={{
-                      color: "black",
-                      marginBottom: 1,
-                    }}
-                  >
-                    {member.position}
-                  </Typography>
-                  <MuiLink
-                    href={member.linkedinUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    sx={{
-                      color: "black",
-                      display: "inline-flex",
-                      alignItems: "center",
-                      marginRight: 1,
-                      transition: "transform 0.3s ease-in-out",
-                      "&:hover": {
-                        transform: "scale(1.1)",
-                      },
-                    }}
-                  >
-                    <LinkedInIcon className="text-blue-500" />
-                  </MuiLink>
-                  <MuiLink
-                    href={member.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    sx={{
-                      color: "black",
-                      display: "inline-flex",
-                      alignItems: "center",
-                      marginRight: 1,
-                      transition: "transform 0.3s ease-in-out",
-                      "&:hover": {
-                        transform: "scale(1.1)",
-                      },
-                    }}
-                  >
-                    <GitHubIcon className="text-[black]" />
-                  </MuiLink>
-                  <MuiLink
-                    href={member.email}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    sx={{
-                      color: "black",
-                      display: "inline-flex",
-                      alignItems: "center",
-                      transition: "transform 0.3s ease-in-out",
-                      "&:hover": {
-                        transform: "scale(1.1)",
-                      },
-                    }}
-                  >
-                    <EmailIcon className="text-[#EA4335]" />
-                  </MuiLink>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+                >
+                  {member.name}
+                </Typography>
+                <Typography
+                  variant="body2"
+                  sx={{
+                    color: "black",
+                    marginBottom: 1,
+                  }}
+                >
+                  {member.position}
+                </Typography>
+                <MuiLink
+                  href={member.linkedinUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  sx={{
+                    color: "black",
+                    display: "inline-flex",
+                    alignItems: "center",
+                    marginRight: 1,
+                    transition: "transform 0.3s ease-in-out",
+                    "&:hover": {
+                      transform: "scale(1.1)",
+                    },
+                  }}
+                >
+                  <LinkedInIcon className="text-blue-500" />
+                </MuiLink>
+                <MuiLink
+                  href={member.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  sx={{
+                    color: "black",
+                    display: "inline-flex",
+                    alignItems: "center",
+                    marginRight: 1,
+                    transition: "transform 0.3s ease-in-out",
+                    "&:hover": {
+                      transform: "scale(1.1)",
+                    },
+                  }}
+                >
+                  <GitHubIcon className="text-[black]" />
+                </MuiLink>
+                <MuiLink
+                  href={member.email}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  sx={{
+                    color: "black",
+                    display: "inline-flex",
+                    alignItems: "center",
+                    transition: "transform 0.3s ease-in-out",
+                    "&:hover": {
+                      transform: "scale(1.1)",
+                    },
+                  }}
+                >
+                  <EmailIcon className="text-[#EA4335]" />
+                </MuiLink>
+              </CardContent>
+            </Card>
+          ))}
         </Container>
       </section>
 
