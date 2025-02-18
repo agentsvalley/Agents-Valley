@@ -42,14 +42,6 @@ import MenuIcon from "@mui/icons-material/Menu";
 export default function Home() {
   const teamMembers = [
     {
-      name: "Hamza Rehman",
-      position: "Founder",
-      imageUrl: "/hamza.jpg",
-      linkedinUrl: "https://www.linkedin.com/in/hamzarehman4",
-      githubUrl: "https://github.com/masterwithhamza",
-      email: "mailto:hamza.rehman.shaikh@gmail.com",
-    },
-    {
       name: "Abdullah Bin Altaf",
       position: "Co-Founder",
       imageUrl: "/abdullah.jpg",
